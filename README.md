@@ -8,17 +8,13 @@ This project showcases five core capabilities: topic-based documentation with en
 
 ## What This Project Demonstrates
 
-This portfolio piece maps to five professional documentation engineering competencies:
+This portfolio piece demonstrates three professional documentation engineering competencies:
 
 1. **Topic-based documentation:** A complete docs set (concepts, tasks, reference, release notes) in Markdown, published through MkDocs with Material theme to GitHub Pages via a Git-based CI/CD pipeline.
 
 2. **Automated quality gates:** Python scripts enforce metadata standards, verify link integrity, and assemble release notes from Git history. Vale enforces style guide and terminology with custom rules. All checks run in CI.
 
-3. **GenAI-assisted authoring pilot:** Versioned prompt templates for drafting, summarizing, and editing documentation. Every AI-generated topic passes through a human accuracy review checklist. Real time savings and failure modes documented in `pilot/FINDINGS.md`.
-
-4. **RAG documentation chatbot:** Embeddings (sentence-transformers/AWS Bedrock), FAISS vector search, and LLM-based question answering with source citations. Handles "I don't know" cases correctly.
-
-5. **Evaluation and gap analysis:** A 15-20 question evaluation set scores retrieval accuracy, citation correctness, and unanswerable-question handling. Automatically generates a content gap report identifying missing or weak topics.
+3. **GenAI-assisted authoring pilot:** Versioned prompt templates for drafting, summarizing, and editing documentation. Framework for human accuracy review with checklist and findings documentation.
 
 ## Quick Start
 
@@ -66,20 +62,7 @@ vale docs/
 pytest tests/ -v
 ```
 
-### Build and Query the RAG Chatbot
 
-```bash
-# Ingest documentation and build the index
-python rag/ingest.py
-
-# Ask a question
-python rag/ask.py "How do I configure AWS Bedrock?"
-
-# Run the evaluation suite
-python eval/run_eval.py
-```
-
-The evaluation generates `eval/gaps_report.md` with content improvement recommendations.
 
 ## Repository Structure
 
@@ -106,14 +89,7 @@ DocsPilot/
 │   ├── REVIEW_CHECKLIST.md       # Human accuracy gate
 │   ├── log.csv                   # Authoring time measurements
 │   └── FINDINGS.md               # GenAI pilot results
-├── rag/
-│   ├── embeddings.py             # Embedding interface
-│   ├── ingest.py                 # Document chunking and indexing
-│   └── ask.py                    # Question answering CLI
-├── eval/
-│   ├── questions.yaml            # Evaluation question set
-│   ├── run_eval.py               # RAG evaluation runner
-│   └── gaps_report.md            # Generated content gap analysis
+
 ├── tests/                        # Pytest test suite
 └── .github/workflows/docs.yml    # CI/CD pipeline
 ```
@@ -136,25 +112,19 @@ I use large language models to **draft** documentation topics, but never publish
 - Private codebases without authorization
 - Unverified facts that might be amplified into documentation
 
-### RAG Chatbot Architecture
 
-The docs chatbot uses retrieval-augmented generation with a strict constraint: **only answer from the retrieved documentation context**. If the context doesn't contain the answer, the bot says "I don't know" and names the closest available topic.
-
-LLM and embedding interfaces are abstracted so tests run offline with stubs, and production can switch between local models (sentence-transformers) and cloud services (AWS Bedrock).
 
 ## Live Documentation
 
 **Published site:** https://yash-kalkhambkar.github.io/DocsPilot/
 
-## Limitations and Future Work
+## Limitations
 
 This is a portfolio demonstration with known constraints:
 
-- **Small documentation set:** 8-10 topics cover core CreditShield features only. A production docs site would require 50-100 topics.
-- **Evaluation set size:** 15-20 questions demonstrate the evaluation approach but are not statistically significant.
-- **RAG chunking strategy:** Current implementation splits by heading with fixed token limits. Advanced approaches (semantic chunking, multi-level indexing) would improve retrieval.
+- **Small documentation set:** 11 topics cover core CreditShield features only. A production docs site would require 50-100 topics.
 - **No usage analytics:** A production site would track page views, search queries, and user feedback to guide content priorities.
-- **Limited GenAI pilot data:** Timing measurements are based on authoring 8-10 topics. Statistically significant conclusions require larger samples.
+- **GenAI pilot framework only:** Prompt templates and review checklist created, but pilot measurements not yet conducted.
 
 ## Technology Stack
 
