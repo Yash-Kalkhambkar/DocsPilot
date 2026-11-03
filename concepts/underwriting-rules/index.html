@@ -1,0 +1,1710 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Technical documentation for CreditShield AI Loan Origination System">
+      
+      
+        <meta name="author" content="Yash Kalkhambkar">
+      
+      
+        <link rel="canonical" href="https://yash-kalkhambkar.github.io/DocsPilot/concepts/underwriting-rules/">
+      
+      
+        <link rel="prev" href="../loan-origination-lifecycle/">
+      
+      
+        <link rel="next" href="../rag-grounding/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>Underwriting Rules - CreditShield Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#underwriting-rules" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CreditShield Documentation" class="md-header__button md-logo" aria-label="CreditShield Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CreditShield Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Underwriting Rules
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Yash-Kalkhambkar/DocsPilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Yash-Kalkhambkar/DocsPilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../overview/" class="md-tabs__link">
+          
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tasks/run-creditshield-locally/" class="md-tabs__link">
+          
+  
+  Tasks
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/api-endpoints/" class="md-tabs__link">
+          
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../release-notes/v0.1.0/" class="md-tabs__link">
+          
+  
+  Release Notes
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CreditShield Documentation" class="md-nav__button md-logo" aria-label="CreditShield Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    CreditShield Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Yash-Kalkhambkar/DocsPilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Yash-Kalkhambkar/DocsPilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Concepts
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Concepts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../loan-origination-lifecycle/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Loan Origination Lifecycle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Underwriting Rules
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Underwriting Rules
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-underwriting-rules-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Underwriting Rules Do
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hard-rules-vs-soft-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hard Rules vs Soft Rules
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hard Rules vs Soft Rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hard-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hard Rules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soft-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Soft Rules
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-5-risk-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      The 5 Risk Categories
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The 5 Risk Categories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-income-stability" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Income Stability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-credit-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Credit Behaviour
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-financial-discipline" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Financial Discipline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-loan-burden" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Loan Burden
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-lifestyle-risk" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Lifestyle Risk
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-hard-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Hard Rules
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Hard Rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hr-01-foir-maximum" class="md-nav__link">
+    <span class="md-ellipsis">
+      HR-01: FOIR Maximum
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hr-02-document-tampering" class="md-nav__link">
+    <span class="md-ellipsis">
+      HR-02: Document Tampering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hr-03-npawrite-off-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      HR-03: NPA/Write-off History
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hr-04-income-variance" class="md-nav__link">
+    <span class="md-ellipsis">
+      HR-04: Income Variance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hr-05-loan-stacking" class="md-nav__link">
+    <span class="md-ellipsis">
+      HR-05: Loan Stacking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hr-06-minimum-cibil-score" class="md-nav__link">
+    <span class="md-ellipsis">
+      HR-06: Minimum CIBIL Score
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hr-07-minimum-income" class="md-nav__link">
+    <span class="md-ellipsis">
+      HR-07: Minimum Income
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-soft-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Soft Rules
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Soft Rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sr-01-income-variability" class="md-nav__link">
+    <span class="md-ellipsis">
+      SR-01: Income Variability
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-rules-are-evaluated" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Rules Are Evaluated
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rule-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rule Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rule-violation-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rule Violation Reports
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#counterfactual-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Counterfactual Analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-custom-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Custom Rules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regulatory-grounding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regulatory Grounding
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audit-and-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Audit and Compliance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Related Topics
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rag-grounding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RAG Grounding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tasks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Tasks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tasks/run-creditshield-locally/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Run CreditShield Locally
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tasks/configure-aws-bedrock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure AWS Bedrock
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tasks/add-an-underwriting-rule/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Add an Underwriting Rule
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tasks/generate-an-appraisal-report/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generate an Appraisal Report
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/api-endpoints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Endpoints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Release Notes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Release Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/v0.1.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v0.1.0
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-underwriting-rules-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Underwriting Rules Do
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hard-rules-vs-soft-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hard Rules vs Soft Rules
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hard Rules vs Soft Rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hard-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hard Rules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soft-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Soft Rules
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-5-risk-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      The 5 Risk Categories
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The 5 Risk Categories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-income-stability" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Income Stability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-credit-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Credit Behaviour
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-financial-discipline" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Financial Discipline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-loan-burden" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Loan Burden
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-lifestyle-risk" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Lifestyle Risk
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-hard-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Hard Rules
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Hard Rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hr-01-foir-maximum" class="md-nav__link">
+    <span class="md-ellipsis">
+      HR-01: FOIR Maximum
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hr-02-document-tampering" class="md-nav__link">
+    <span class="md-ellipsis">
+      HR-02: Document Tampering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hr-03-npawrite-off-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      HR-03: NPA/Write-off History
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hr-04-income-variance" class="md-nav__link">
+    <span class="md-ellipsis">
+      HR-04: Income Variance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hr-05-loan-stacking" class="md-nav__link">
+    <span class="md-ellipsis">
+      HR-05: Loan Stacking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hr-06-minimum-cibil-score" class="md-nav__link">
+    <span class="md-ellipsis">
+      HR-06: Minimum CIBIL Score
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hr-07-minimum-income" class="md-nav__link">
+    <span class="md-ellipsis">
+      HR-07: Minimum Income
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-soft-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Soft Rules
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Soft Rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sr-01-income-variability" class="md-nav__link">
+    <span class="md-ellipsis">
+      SR-01: Income Variability
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-rules-are-evaluated" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Rules Are Evaluated
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rule-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rule Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rule-violation-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rule Violation Reports
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#counterfactual-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Counterfactual Analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-custom-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Custom Rules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regulatory-grounding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regulatory Grounding
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audit-and-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Audit and Compliance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Related Topics
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="underwriting-rules">Underwriting Rules<a class="headerlink" href="#underwriting-rules" title="Permanent link">&para;</a></h1>
+<p>CreditShield enforces 50+ configurable underwriting rules across 5 risk categories to automate policy compliance and risk assessment.</p>
+<h2 id="what-underwriting-rules-do">What Underwriting Rules Do<a class="headerlink" href="#what-underwriting-rules-do" title="Permanent link">&para;</a></h2>
+<p>Underwriting rules systematically evaluate loan applications against lender policy and regulatory requirements. Each rule tests a specific condition (income threshold, debt ratio, CIBIL score) and returns a pass or fail result.</p>
+<p>Rules provide three benefits:</p>
+<ol>
+<li><strong>Consistency:</strong> Every application evaluated against identical criteria</li>
+<li><strong>Speed:</strong> Automated rule execution completes in seconds</li>
+<li><strong>Auditability:</strong> Rule violations documented with regulatory citations</li>
+</ol>
+<h2 id="hard-rules-vs-soft-rules">Hard Rules vs Soft Rules<a class="headerlink" href="#hard-rules-vs-soft-rules" title="Permanent link">&para;</a></h2>
+<h3 id="hard-rules">Hard Rules<a class="headerlink" href="#hard-rules" title="Permanent link">&para;</a></h3>
+<p>Hard rules cause <strong>automatic rejection</strong> when violated. No manual override allowed.</p>
+<p><strong>Use case:</strong> Violations indicate unacceptable risk or regulatory non-compliance.</p>
+<p><strong>Example:</strong> A borrower with CIBIL score 480 violates HR-06 (minimum 550 for unsecured personal loans). The application auto-rejects without reaching credit analyst review.</p>
+<h3 id="soft-rules">Soft Rules<a class="headerlink" href="#soft-rules" title="Permanent link">&para;</a></h3>
+<p>Soft rules trigger <strong>manual review</strong> when violated. Credit Analyst or Underwriter can approve with documented rationale.</p>
+<p><strong>Use case:</strong> Violations indicate elevated risk but may be acceptable with compensating factors.</p>
+<p><strong>Example:</strong> A borrower with income variability 35% violates SR-01 (threshold 30%). Credit Analyst reviews income sources and may approve if variability is seasonal and predictable.</p>
+<h2 id="the-5-risk-categories">The 5 Risk Categories<a class="headerlink" href="#the-5-risk-categories" title="Permanent link">&para;</a></h2>
+<h3 id="1-income-stability">1. Income Stability<a class="headerlink" href="#1-income-stability" title="Permanent link">&para;</a></h3>
+<p>Evaluates income source reliability and consistency.</p>
+<p><strong>Example rules:</strong>
+- Minimum income threshold per loan product
+- Income variability coefficient limit
+- Income verification vs declared variance
+- Continuous employment duration requirement</p>
+<p><strong>Why it matters:</strong> Stable income indicates ability to service debt over loan tenure.</p>
+<h3 id="2-credit-behaviour">2. Credit Behaviour<a class="headerlink" href="#2-credit-behaviour" title="Permanent link">&para;</a></h3>
+<p>Assesses past credit usage and repayment patterns.</p>
+<p><strong>Example rules:</strong>
+- Minimum CIBIL score threshold
+- No NPA (Non-Performing Asset) or write-off in last 36 months
+- Maximum enquiries in last 90 days
+- No active disputes with lenders</p>
+<p><strong>Why it matters:</strong> Past credit behaviour predicts future repayment likelihood.</p>
+<h3 id="3-financial-discipline">3. Financial Discipline<a class="headerlink" href="#3-financial-discipline" title="Permanent link">&para;</a></h3>
+<p>Measures expense management and savings habits.</p>
+<p><strong>Example rules:</strong>
+- Minimum savings ratio (monthly income minus expenses)
+- Maximum overdraft frequency
+- Minimum average bank balance
+- Liquidity stress threshold</p>
+<p><strong>Why it matters:</strong> Financial discipline indicates borrower ability to absorb income shocks.</p>
+<h3 id="4-loan-burden">4. Loan Burden<a class="headerlink" href="#4-loan-burden" title="Permanent link">&para;</a></h3>
+<p>Calculates total debt relative to income.</p>
+<p><strong>Example rules:</strong>
+- FOIR (Fixed Obligations to Income Ratio) maximum 65% for unsecured personal loans
+- Maximum number of active loans
+- Loan stacking detection (3+ new loans in 90 days)
+- Total EMI to income ratio</p>
+<p><strong>Why it matters:</strong> Excessive loan burden reduces repayment capacity and increases default risk.</p>
+<h3 id="5-lifestyle-risk">5. Lifestyle Risk<a class="headerlink" href="#5-lifestyle-risk" title="Permanent link">&para;</a></h3>
+<p>Identifies spending patterns indicating unsustainable lifestyle.</p>
+<p><strong>Example rules:</strong>
+- Discretionary spending as percentage of income
+- Luxury goods transaction frequency
+- High-value cash withdrawal patterns
+- Gambling or speculative activity detection</p>
+<p><strong>Why it matters:</strong> Lifestyle risk can consume income needed for EMI payments.</p>
+<h2 id="key-hard-rules">Key Hard Rules<a class="headerlink" href="#key-hard-rules" title="Permanent link">&para;</a></h2>
+<p>The following hard rules are confirmed in the codebase:</p>
+<h3 id="hr-01-foir-maximum">HR-01: FOIR Maximum<a class="headerlink" href="#hr-01-foir-maximum" title="Permanent link">&para;</a></h3>
+<p><strong>Rule:</strong> Fixed Obligations to Income Ratio must not exceed 65% for unsecured personal loans.</p>
+<p><strong>Calculation:</strong> <code>(Total Monthly EMI Obligations / Monthly Income) × 100</code></p>
+<p><strong>Example violation:</strong> Borrower earns ₹50,000/month with existing EMIs totaling ₹35,000/month. FOIR = 70%. Violates HR-01.</p>
+<p><strong>Regulatory basis:</strong> RBI Master Direction on Digital Lending, internal credit policy.</p>
+<h3 id="hr-02-document-tampering">HR-02: Document Tampering<a class="headerlink" href="#hr-02-document-tampering" title="Permanent link">&para;</a></h3>
+<p><strong>Rule:</strong> No document tampering detected in salary slips, bank statements, or ITR.</p>
+<p><strong>Detection method:</strong> AI fraud analysis tool checks for altered amounts, modified dates, inconsistent fonts, digital manipulation artifacts.</p>
+<p><strong>Example violation:</strong> Bank statement shows signs of PDF editing. Transaction amounts modified. Violates HR-02.</p>
+<h3 id="hr-03-npawrite-off-history">HR-03: NPA/Write-off History<a class="headerlink" href="#hr-03-npawrite-off-history" title="Permanent link">&para;</a></h3>
+<p><strong>Rule:</strong> No NPA or write-off in last 36 months as borrower or guarantor.</p>
+<p><strong>Data source:</strong> Credit bureau reports, internal lender history.</p>
+<p><strong>Example violation:</strong> Borrower defaulted on personal loan 24 months ago. Loan written off by previous lender. Violates HR-03.</p>
+<h3 id="hr-04-income-variance">HR-04: Income Variance<a class="headerlink" href="#hr-04-income-variance" title="Permanent link">&para;</a></h3>
+<p><strong>Rule:</strong> Verified income must not vary by more than 50% from declared income.</p>
+<p><strong>Verification sources:</strong> Bank statement credit analysis, salary slip verification, ITR cross-check.</p>
+<p><strong>Example violation:</strong> Borrower declared monthly income ₹60,000. Bank statement shows average monthly credits ₹35,000. Variance = 42%. Violates HR-04 if threshold is 40%.</p>
+<h3 id="hr-05-loan-stacking">HR-05: Loan Stacking<a class="headerlink" href="#hr-05-loan-stacking" title="Permanent link">&para;</a></h3>
+<p><strong>Rule:</strong> Maximum 3 new unsecured loans in 90-day period.</p>
+<p><strong>Detection method:</strong> Credit bureau enquiry count, internal application database.</p>
+<p><strong>Example violation:</strong> Borrower applied for 4 personal loans across 3 lenders in last 75 days. Violates HR-05.</p>
+<p><strong>Why it matters:</strong> Loan stacking indicates financial distress or fraud.</p>
+<h3 id="hr-06-minimum-cibil-score">HR-06: Minimum CIBIL Score<a class="headerlink" href="#hr-06-minimum-cibil-score" title="Permanent link">&para;</a></h3>
+<p><strong>Rule:</strong> Minimum CIBIL score 550 for unsecured personal loans.</p>
+<p><strong>Data source:</strong> Credit bureau report.</p>
+<p><strong>Example violation:</strong> Borrower CIBIL score 520. Violates HR-06.</p>
+<p><strong>Note:</strong> Threshold varies by loan product. Education loans may accept lower scores.</p>
+<h3 id="hr-07-minimum-income">HR-07: Minimum Income<a class="headerlink" href="#hr-07-minimum-income" title="Permanent link">&para;</a></h3>
+<p><strong>Rule:</strong> Verified monthly income must meet or exceed product-specific minimum.</p>
+<p><strong>Thresholds (example):</strong>
+- Personal loan: ₹25,000/month
+- Home loan: ₹40,000/month
+- Business loan: ₹50,000/month</p>
+<p><strong>Example violation:</strong> Borrower applies for personal loan with verified income ₹20,000/month. Violates HR-07.</p>
+<h2 id="key-soft-rules">Key Soft Rules<a class="headerlink" href="#key-soft-rules" title="Permanent link">&para;</a></h2>
+<h3 id="sr-01-income-variability">SR-01: Income Variability<a class="headerlink" href="#sr-01-income-variability" title="Permanent link">&para;</a></h3>
+<p><strong>Rule:</strong> Income coefficient of variation (CV) triggers manual review if above threshold.</p>
+<p><strong>Calculation:</strong> <code>(Standard Deviation of Monthly Income / Mean Monthly Income) × 100</code></p>
+<p><strong>Typical threshold:</strong> 30%</p>
+<p><strong>Example:</strong> Freelancer with monthly income ranging ₹30,000–₹90,000. CV = 35%. Triggers SR-01 for manual review.</p>
+<p><strong>Credit Analyst action:</strong> Assess if variability is seasonal, project-based, or indicates income instability.</p>
+<h2 id="how-rules-are-evaluated">How Rules Are Evaluated<a class="headerlink" href="#how-rules-are-evaluated" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Trigger point:</strong> Stage 3 (Eligibility and Rule Screening) in the loan origination lifecycle</li>
+<li><strong>Execution:</strong> AI agent <code>rule_violation_tool</code> runs all applicable rules</li>
+<li><strong>Data sources:</strong> Borrower profile, uploaded documents, credit bureau, bank statement analysis</li>
+<li><strong>Output:</strong> List of violated rules with triggered values, thresholds, regulatory citations</li>
+<li><strong>Action:</strong> Hard rules cause auto-reject. Soft rules escalate to Credit Analyst.</li>
+</ol>
+<h2 id="rule-configuration">Rule Configuration<a class="headerlink" href="#rule-configuration" title="Permanent link">&para;</a></h2>
+<p>Rules are <strong>configurable per loan product and lender policy</strong>. Parameters that can be adjusted:</p>
+<ul>
+<li>Threshold values (FOIR limit, minimum income, CIBIL score)</li>
+<li>Hard vs soft classification (whether violation auto-rejects)</li>
+<li>Loan product applicability (rules apply to personal loans only, or all products)</li>
+<li>Regional variations (different thresholds for metro vs non-metro borrowers)</li>
+</ul>
+<p><strong>Configuration location:</strong> TODO(verify) — Check ai_agent or Backend service layer for rule definition files.</p>
+<h2 id="rule-violation-reports">Rule Violation Reports<a class="headerlink" href="#rule-violation-reports" title="Permanent link">&para;</a></h2>
+<p>When a rule is violated, CreditShield generates a report containing:</p>
+<ul>
+<li><strong>Rule ID:</strong> Unique identifier (e.g., HR-01, SR-01)</li>
+<li><strong>Rule name:</strong> Human-readable description</li>
+<li><strong>Triggered value:</strong> Actual value calculated for this borrower</li>
+<li><strong>Threshold:</strong> Policy threshold that was exceeded</li>
+<li><strong>Detail:</strong> Explanation of why violation occurred</li>
+<li><strong>Regulation reference:</strong> Citation from RBI circular or lending policy (retrieved via RAG)</li>
+<li><strong>Source document:</strong> Policy file containing the rule definition</li>
+<li><strong>Severity:</strong> Hard (fatal) or soft (warning)</li>
+</ul>
+<p>See <a href="../rag-grounding/">RAG Grounding</a> for details on how regulatory citations are retrieved.</p>
+<h2 id="counterfactual-analysis">Counterfactual Analysis<a class="headerlink" href="#counterfactual-analysis" title="Permanent link">&para;</a></h2>
+<p>When a rule is violated, the AI agent can generate <strong>counterfactual recommendations</strong> showing what the borrower could change to pass the rule.</p>
+<p><strong>Example counterfactual for HR-01 (FOIR) violation:</strong></p>
+<blockquote>
+<p>"Current FOIR is 70% (₹35,000 EMI / ₹50,000 income). To meet the 65% threshold, either:
+- Increase verified income to ₹53,850/month, or
+- Reduce existing EMI obligations by ₹2,500/month (close one existing loan), or
+- Request lower loan amount reducing new EMI by ₹2,500/month"</p>
+</blockquote>
+<p>See <a href="../../tasks/generate-an-appraisal-report/">Generate an Appraisal Report</a> for examples.</p>
+<h2 id="adding-custom-rules">Adding Custom Rules<a class="headerlink" href="#adding-custom-rules" title="Permanent link">&para;</a></h2>
+<p>Lenders can add custom rules specific to their portfolio risk appetite. See <a href="../../tasks/add-an-underwriting-rule/">Add an Underwriting Rule</a>.</p>
+<h2 id="regulatory-grounding">Regulatory Grounding<a class="headerlink" href="#regulatory-grounding" title="Permanent link">&para;</a></h2>
+<p>Every rule violation cites the relevant regulation or policy:</p>
+<ul>
+<li><strong>RBI Master Direction:</strong> Digital Lending (2022)</li>
+<li><strong>RBI Guidelines:</strong> Credit Bureau reporting, KYC norms</li>
+<li><strong>Internal Policy:</strong> Lender-specific credit policies</li>
+</ul>
+<p>Citations are retrieved automatically via RAG from policy documents stored in the <code>document/</code> directory.</p>
+<h2 id="performance">Performance<a class="headerlink" href="#performance" title="Permanent link">&para;</a></h2>
+<p>Rule evaluation completes in under 3 seconds for a typical application with:</p>
+<ul>
+<li>50+ rules executed</li>
+<li>3 months of bank statement data</li>
+<li>10+ documents analyzed</li>
+<li>RAG retrieval for 5-10 policy citations</li>
+</ul>
+<h2 id="audit-and-compliance">Audit and Compliance<a class="headerlink" href="#audit-and-compliance" title="Permanent link">&para;</a></h2>
+<p>Rule violations are logged for every application:</p>
+<ul>
+<li>Which rules were evaluated</li>
+<li>Which rules were violated</li>
+<li>Threshold values at time of evaluation</li>
+<li>Whether violation caused rejection or manual review</li>
+<li>Who overrode soft rule violations (if applicable) with rationale</li>
+</ul>
+<p>Audit logs support compliance reporting and model governance.</p>
+<h2 id="related-topics">Related Topics<a class="headerlink" href="#related-topics" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../loan-origination-lifecycle/">Loan Origination Lifecycle</a> — When rules are evaluated in the workflow</li>
+<li><a href="../rag-grounding/">RAG Grounding</a> — How regulatory citations are retrieved</li>
+<li><a href="../../tasks/add-an-underwriting-rule/">Add an Underwriting Rule</a> — Step-by-step guide for developers</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+    
+  </body>
+</html>
