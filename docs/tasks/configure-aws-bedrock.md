@@ -22,7 +22,7 @@ Enable AWS Bedrock for production AI features including Llama 3 70B LLM and Tita
 
 ### 1. Enable Bedrock model access in AWS Console
 
-Log in to AWS Console and navigate to Amazon Bedrock service.
+Log in to AWS Console and navigate to AWS Bedrock service.
 
 ### 2. Select the ap-south-1 region
 
@@ -52,7 +52,7 @@ Click **Request access** and accept terms.
 
 Model ID: `amazon.titan-embed-text-v2:0`
 
-### 6. Wait for approval
+### 6. Wait for sanction
 
 Model access is typically granted within 5-10 minutes for standard AWS accounts.
 
@@ -195,9 +195,9 @@ Use AWS Cost Explorer to monitor actual usage.
 
 ### Model access pending
 
-**Cause:** Model access not yet approved.
+**Cause:** Model access not yet sanctioned.
 
-**Solution:** Wait 5-10 minutes. Refresh **Model access** page in AWS Console. Contact AWS Support if approval delayed beyond 24 hours.
+**Solution:** Wait 5-10 minutes. Refresh **Model access** page in AWS Console. Contact AWS Support if sanction delayed beyond 24 hours.
 
 ### ResourceNotFoundException
 

@@ -14,7 +14,7 @@ CreditShield enforces 50+ configurable underwriting rules across 5 risk categori
 
 ## What Underwriting Rules Do
 
-Underwriting rules systematically evaluate loan applications against lender policy and regulatory requirements. Each rule tests a specific condition (income threshold, debt ratio, credit score) and returns a pass or fail result.
+Underwriting rules systematically evaluate loan applications against lender policy and regulatory requirements. Each rule tests a specific condition (income threshold, debt ratio, CIBIL score) and returns a pass or fail result.
 
 Rules provide three benefits:
 
@@ -64,7 +64,7 @@ Assesses past credit usage and repayment patterns.
 - Maximum enquiries in last 90 days
 - No active disputes with lenders
 
-**Why it matters:** Past credit behavior predicts future repayment likelihood.
+**Why it matters:** Past credit behaviour predicts future repayment likelihood.
 
 ### 3. Financial Discipline
 
@@ -74,7 +74,7 @@ Measures expense management and savings habits.
 - Minimum savings ratio (monthly income minus expenses)
 - Maximum overdraft frequency
 - Minimum average bank balance
-- Low-balance days threshold
+- Liquidity stress threshold
 
 **Why it matters:** Financial discipline indicates borrower ability to absorb income shocks.
 
@@ -100,7 +100,7 @@ Identifies spending patterns indicating unsustainable lifestyle.
 - High-value cash withdrawal patterns
 - Gambling or speculative activity detection
 
-**Why it matters:** Lifestyle inflation can consume income needed for EMI payments.
+**Why it matters:** Lifestyle risk can consume income needed for EMI payments.
 
 ## Key Hard Rules
 

@@ -193,10 +193,10 @@ This prevents hallucination where the LLM invents plausible but false answers.
 The professional appraisal report uses RAG extensively:
 
 - **Page 1 (Risk Drivers):** Retrieves policy citations for each identified risk
-- **Page 3 (Liability Analysis):** Retrieves FOIR thresholds and debt burden policies
+- **Page 3 (Liability Analysis):** Retrieves FOIR thresholds and loan burden policies
 - **Page 4 (Recommendations):** Retrieves eligibility criteria for alternative loan products
 
-Every risk factor and recommendation includes a source citation retrieved via RAG.
+Every risk driver and recommendation includes a source citation retrieved via RAG.
 
 ## Performance
 
@@ -260,7 +260,7 @@ RAG has known limitations:
 
 ## Security and Privacy
 
-- **Policy documents:** Public RBI circulars and internal policies only. No customer data.
+- **Policy documents:** Public RBI circulars and internal policies only. No borrower data.
 - **Borrower documents:** Isolated per ARN. Namespace ensures one borrower cannot access another's documents.
 - **Embedding privacy:** AWS Bedrock embeddings are not stored by AWS. Vectors stored locally in FAISS.
 

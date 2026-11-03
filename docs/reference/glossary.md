@@ -131,7 +131,7 @@ Total existing debt obligations relative to income.
 Front-line staff responsible for application intake and document completeness.
 
 **Loan origination**  
-Complete lifecycle from loan application to approval or rejection.
+Complete lifecycle from loan application to sanction or rejection.
 
 **Loan Origination System (LOS)**  
 Software platform managing the loan origination lifecycle.
@@ -174,7 +174,7 @@ Factor contributing to overall credit risk assessment.
 ## S
 
 **Sanction**  
-Official approval to disburse a loan.
+Official sanction to disburse a loan.
 
 **Soft rule**  
 Underwriting rule that triggers manual review when violated, allowing potential override with documented rationale.

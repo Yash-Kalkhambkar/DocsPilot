@@ -4,7 +4,7 @@
 extends: substitution
 message: "Use '%s' instead of '%s'"
 level: error
-ignorecase: true
+ignorecase: false
 
 # Build substitution rules from terminology list
 swap:
@@ -33,15 +33,9 @@ swap:
   'decisioner': underwriter
   'customer': borrower
   'applicant': borrower
-  'client': borrower
   'loan applicant': borrower
   
   # Technical terms
-  'Bedrock': AWS Bedrock
-  'Amazon Bedrock': AWS Bedrock
-  'Llama3': Llama 3 70B
-  'LLama': Llama 3 70B
-  'llama': Llama 3 70B
   'Postgres': PostgreSQL
   'postgres': PostgreSQL
   'postgresql': PostgreSQL
@@ -52,7 +46,6 @@ swap:
   'retrieval augmented generation': RAG
   'Faiss': FAISS
   'faiss': FAISS
-  'react': ReAct
   'test mode': mock mode
   'stub mode': mock mode
   

@@ -22,7 +22,7 @@ Generate a 4-page professional loan appraisal report for loan officers and under
 
 The 4-page report includes:
 
-**Page 1:** Executive summary, applicant profile, loan request overview, key financial snapshot, risk drivers, final credit decision
+**Page 1:** Executive summary, borrower profile, loan request overview, key financial snapshot, risk drivers, final credit decision
 
 **Page 2:** Income and cashflow analysis, liquidity analysis, financial discipline assessment
 
@@ -182,7 +182,7 @@ print(report)
 
 **Cashflow Analysis:** 12-month inflow/outflow, net savings, savings ratio interpretation.
 
-**Liquidity Analysis:** Min/max/average balance, low-balance days, stress days, month-end stress.
+**Liquidity Analysis:** Min/max/average balance, liquidity stress, stress days, month-end stress.
 
 **Financial Discipline:** Spending vs earning behavior, consistency, volatility.
 
@@ -190,7 +190,7 @@ print(report)
 
 **Expense Behavior:** Essential spending breakdown (rent, food, travel, bills), discretionary spending, lifestyle insight.
 
-**Liability Analysis:** Existing EMIs, BNPL/credit usage, hidden liabilities, debt-to-income ratio, annual debt payment.
+**Liability Analysis:** Existing EMIs, BNPL/credit usage, hidden liabilities, Fixed Obligations to Income Ratio, annual debt payment.
 
 **Loan Affordability:**
 - Expected monthly EMI
@@ -206,7 +206,7 @@ print(report)
 
 **Credit Bureau Insights:** CIBIL score, bureau data analysis (if available).
 
-**Recommendations:** Actions for approval, caution items for conditional approval, or reasons for rejection.
+**Recommendations:** Actions for sanction, caution items for conditional sanction, or reasons for rejection.
 
 ## Customizing the Report
 
@@ -262,7 +262,7 @@ The report quality depends on:
 
 - **Bank statement completeness:** More transactions = better income/expense analysis
 - **Transaction categorization accuracy:** ML model trained on labeled transaction data
-- **Bureau data availability:** Credit score and history improve risk assessment
+- **Bureau data availability:** CIBIL score and history improve risk assessment
 - **RAG policy retrieval:** Accurate regulatory citations require well-indexed policy documents
 
 ## Using Mock Mode
