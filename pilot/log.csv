@@ -1,0 +1,13 @@
+topic,method,minutes_spent,errors_found_in_review,notes
+index.md,manual,TODO(human),TODO(human),TODO(human)
+concepts/overview.md,manual,TODO(human),TODO(human),TODO(human)
+concepts/loan-origination-lifecycle.md,manual,TODO(human),TODO(human),TODO(human)
+concepts/underwriting-rules.md,manual,TODO(human),TODO(human),TODO(human)
+concepts/rag-grounding.md,manual,TODO(human),TODO(human),TODO(human)
+tasks/run-creditshield-locally.md,manual,TODO(human),TODO(human),TODO(human)
+tasks/configure-aws-bedrock.md,manual,TODO(human),TODO(human),TODO(human)
+tasks/add-an-underwriting-rule.md,manual,TODO(human),TODO(human),TODO(human)
+tasks/generate-an-appraisal-report.md,manual,TODO(human),TODO(human),TODO(human)
+reference/api-endpoints.md,manual,TODO(human),TODO(human),TODO(human)
+reference/configuration.md,manual,TODO(human),TODO(human),TODO(human)
+reference/glossary.md,manual,TODO(human),TODO(human),TODO(human)

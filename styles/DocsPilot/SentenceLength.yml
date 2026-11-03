@@ -1,0 +1,9 @@
+# Sentence length warning
+# Keep sentences under 25 words for readability
+
+extends: occurrence
+message: "Sentence is %d words long (max 25)"
+level: warning
+scope: sentence
+max: 25
+token: '\b(\w+)\b'

@@ -1,0 +1,24 @@
+# Filler words warning
+# Avoid unnecessary filler words
+
+extends: existence
+message: "Remove filler word: '%s'"
+level: warning
+ignorecase: true
+tokens:
+  - simply
+  - just
+  - please note
+  - note that
+  - it should be noted
+  - obviously
+  - clearly
+  - basically
+  - actually
+  - very
+  - really
+  - quite
+  - rather
+  - somewhat
+  - pretty much
+  - in order to

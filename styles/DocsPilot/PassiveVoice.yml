@@ -1,0 +1,9 @@
+# Passive voice warning
+# Prefer active voice for clarity
+
+extends: existence
+message: "Avoid passive voice: '%s'"
+level: warning
+ignorecase: true
+tokens:
+  - '\b(am|is|are|was|were|be|been|being)\s+([\w]+ed|chosen|done|found|given|known|made|seen|sent|taken|written)\b'

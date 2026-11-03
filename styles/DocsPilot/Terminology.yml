@@ -1,0 +1,123 @@
+# Terminology substitution rules from TERMINOLOGY.md
+# Violations are errors (not warnings)
+
+extends: substitution
+message: "Use '%s' instead of '%s'"
+level: error
+ignorecase: true
+
+# Build substitution rules from terminology list
+swap:
+  # Product terms
+  'credit shield': CreditShield
+  'credit-shield': CreditShield
+  'loan processing': loan origination
+  'lending process': loan origination
+  'loan processing system': Loan Origination System
+  'credit memo': appraisal report
+  'assessment report': appraisal report
+  'evaluation report': appraisal report
+  'policy check': underwriting rule
+  'credit rule': underwriting rule
+  'risk rule': underwriting rule
+  'bank employee': loan officer
+  'loan processor': loan officer
+  'loan agent': loan officer
+  'risk analyst': credit analyst
+  'credit officer': credit analyst
+  'field agent': field officer
+  'verification agent': field officer
+  'field executive': field officer
+  'credit approver': underwriter
+  'sanctioning authority': underwriter
+  'decisioner': underwriter
+  'customer': borrower
+  'applicant': borrower
+  'client': borrower
+  'loan applicant': borrower
+  
+  # Technical terms
+  'Bedrock': AWS Bedrock
+  'Amazon Bedrock': AWS Bedrock
+  'Llama3': Llama 3 70B
+  'LLama': Llama 3 70B
+  'llama': Llama 3 70B
+  'Postgres': PostgreSQL
+  'postgres': PostgreSQL
+  'postgresql': PostgreSQL
+  'PostGres': PostgreSQL
+  'Fast API': FastAPI
+  'fast-api': FastAPI
+  'fastapi': FastAPI
+  'retrieval augmented generation': RAG
+  'Faiss': FAISS
+  'faiss': FAISS
+  'react': ReAct
+  'test mode': mock mode
+  'stub mode': mock mode
+  
+  # Financial terms
+  'application ID': Application Reference Number
+  'app ID': Application Reference Number
+  'reference number': Application Reference Number
+  'debt-to-income': Fixed Obligations to Income Ratio
+  'DTI': FOIR
+  'obligation ratio': Fixed Obligations to Income Ratio
+  'bad loan': Non-Performing Asset
+  'defaulted loan': Non-Performing Asset
+  'Reserve bank': Reserve Bank of India
+  'credit score': CIBIL score
+  'bureau score': CIBIL score
+  'identity verification': Know Your Customer
+  'customer verification': Know Your Customer
+  'monthly payment': Equated Monthly Installment
+  'installment': Equated Monthly Installment
+  'buy-now-pay-later': Buy Now Pay Later
+  'hard-stop rule': hard rule
+  'fatal rule': hard rule
+  'rejection rule': hard rule
+  'soft-stop rule': soft rule
+  'warning rule': soft rule
+  'review rule': soft rule
+  'RBI guideline': RBI circular
+  'Reserve Bank circular': RBI circular
+  'regulatory circular': RBI circular
+  'online lending': digital lending
+  'e-lending': digital lending
+  'digital loans': digital lending
+  'approval': sanction
+  'loan approval': sanction
+  'credit approval': sanction
+  'disbursement': disbursal
+  'payout': disbursal
+  'loan payout': disbursal
+  
+  # Risk terms
+  'risk factor': risk driver
+  'risk indicator': risk driver
+  'risk signal': risk driver
+  'what-if scenario': counterfactual
+  'alternative scenario': counterfactual
+  'fraud indicator': fraud signal
+  'fraud flag': fraud signal
+  'suspicious activity': fraud signal
+  'document fraud': document tampering
+  'fake document': document tampering
+  'forged document': document tampering
+  'income consistency': income stability
+  'income reliability': income stability
+  'credit behavior': credit behaviour
+  'repayment behavior': credit behaviour
+  'credit history': credit behaviour
+  'financial behavior': financial discipline
+  'spending discipline': financial discipline
+  'money management': financial discipline
+  'debt burden': loan burden
+  'obligation load': loan burden
+  'debt load': loan burden
+  'discretionary spending risk': lifestyle risk
+  'lifestyle inflation': lifestyle risk
+  'cash flow stress': liquidity stress
+  'low-balance days': liquidity stress
+  'multi-loan pattern': loan stacking
+  'rapid loan accumulation': loan stacking

@@ -1,0 +1,70 @@
+site_name: CreditShield Documentation
+site_description: Technical documentation for CreditShield AI Loan Origination System
+site_author: Yash Kalkhambkar
+site_url: https://yash-kalkhambkar.github.io/DocsPilot/
+
+repo_name: Yash-Kalkhambkar/DocsPilot
+repo_url: https://github.com/Yash-Kalkhambkar/DocsPilot
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - tables
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Concepts:
+      - Overview: concepts/overview.md
+      - Loan Origination Lifecycle: concepts/loan-origination-lifecycle.md
+      - Underwriting Rules: concepts/underwriting-rules.md
+      - RAG Grounding: concepts/rag-grounding.md
+  - Tasks:
+      - Run CreditShield Locally: tasks/run-creditshield-locally.md
+      - Configure AWS Bedrock: tasks/configure-aws-bedrock.md
+      - Add an Underwriting Rule: tasks/add-an-underwriting-rule.md
+      - Generate an Appraisal Report: tasks/generate-an-appraisal-report.md
+  - Reference:
+      - API Endpoints: reference/api-endpoints.md
+      - Configuration: reference/configuration.md
+      - Glossary: reference/glossary.md
+  - Release Notes:
+      - v0.1.0: release-notes/v0.1.0.md
+
+plugins:
+  - search
+
+strict: true
